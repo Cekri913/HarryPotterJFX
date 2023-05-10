@@ -1,15 +1,17 @@
-package com.chris.acolatse.harrypotterJFX.entity;
+package com.chris.acolatse.harrypotterJFX.controller;
+
+import com.chris.acolatse.harrypotterJFX.entity.Wizard;
 
 public class Character{
     String name;
     String animal;
     String core;
+    Wizard wizard;
     String house;
-    public Character(String name, String animal, String core, String house) {
+    public Character(String name, String animal, String core) {
         this.name = name;
         this.animal = animal;
         this.core = core;
-        this.house = house;
     }
     public String getName() {
         return name;
@@ -23,14 +25,14 @@ public class Character{
         return core;
     }
 
-    public String getHouse() {
-        return house;
+
+
+   /* @Override
+    public String toString() {
+        return "Name: " + wizard.getName + "\nPet: " + wizard.getPet + "\nCore: " + wizard.getCore;
     }
 
-    @Override
-    public String toString() {
-        return "Nom: " + name + "\nAnimal: " + animal + "\nCœur: " + core + "\nMaison: " + house;
-    }
+    */
 
 
 }

@@ -3,16 +3,23 @@ package com.chris.acolatse.harrypotterJFX;
 import com.chris.acolatse.harrypotterJFX.entity.Pets;
 import com.chris.acolatse.harrypotterJFX.entity.Wizard;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+
 import java.util.Objects;
+
+
 
 public class HarryPotterJfxApp extends Application {
 
     private Wizard wizard;
+    @FXML
+
 
     @Override
     public void init() throws Exception {

@@ -52,6 +52,7 @@ public class Wizard {
     }
     public void assignHouse(SortingHat sortingHat) {
         this.house = house;
+        System.out.println("Your house is " + house);
     }
     // Methodes
     public void calculateDamage(int damage) {

@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+
     TextAnimator textAnimator;
 
     @FXML
