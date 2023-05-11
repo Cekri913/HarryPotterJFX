@@ -1,8 +1,6 @@
 package com.chris.acolatse.harrypotterJFX;
 
-import com.chris.acolatse.harrypotterJFX.entity.Pets;
-import com.chris.acolatse.harrypotterJFX.entity.UserHolder;
-import com.chris.acolatse.harrypotterJFX.entity.Wizard;
+
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,14 +38,16 @@ public class HarryPotterJfxApp extends Application {
     }
 
 
-    // pour eventuellement liberer dees resources avant de quitter le programme
+    // for eventually release ressources before quit the programm
     @Override
     public void stop() throws Exception {
         System.out.println("Thread : " + Thread.currentThread().getName());
     }
 
-    // Pas besoin
-    /*public static void main(String[] args) {
+    // No needs
+    /*
+    public static void main(String[] args) {
         launch(args);
-    }*/
+    }
+    */
 }

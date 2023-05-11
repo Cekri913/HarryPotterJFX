@@ -12,10 +12,10 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
-        <Label fx:id="pseudoLabel" text="Votre pseudo est : " textFill="WHITE"/>
+        <Label fx:id="pseudoLabel" textFill="white"/>
 
         <HBox spacing="10.0" alignment="CENTER">
-        <Label text="Choisissez votre animal :" textFill="WHITE"/>
+        <Label text="Please choose a pet :" textFill="WHITE"/>
         <ChoiceBox fx:id="petChoice" layoutX="50.0" layoutY="50.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
             <items>
                 <FXCollections fx:factory="observableArrayList">
@@ -29,8 +29,10 @@
                 <String fx:value="cat"/>
             </value>
         </ChoiceBox>
+            <Label fx:id="petLabel" textFill="darkred"/>
         </HBox>
-        <Button onAction="#showRecap" text="GO ON" layoutX="300.0" layoutY="463.0"/>
+
+        <Button onAction="#showRecap" text="NEXT" layoutX="300.0" layoutY="463.0"/>
 
     </children>
     <stylesheets>

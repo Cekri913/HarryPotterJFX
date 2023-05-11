@@ -19,7 +19,10 @@ import java.util.Objects;
 public class PetController {
     public static String selectedAnimal;
     @FXML
-    public ChoiceBox<String> petChoice;
+    public static ChoiceBox<String> petChoice;
+    @FXML
+            private Label petLabel;
+    static String petSelected;
 
     Wizard wizard ;
     WizardController wizardController;
@@ -34,32 +37,34 @@ public class PetController {
 
 
     public void showRecap(ActionEvent actionEvent) throws IOException {
-        if (petChoice != null) {
-            String name = WizardController.pseudoInput.getText();
-            wizard = new Wizard(name);
+        if (petChoice.getValue() != null) {
+            petSelected = petChoice.getValue();
+            System.out.println(petSelected);
+            //String name = WizardController.pseudoInput.getText();
+            //String pet = petChoice.getValue();
+            //String core = CoreController.selectedCore;
+
+            //wizard = new Wizard(name);
 
 
-            petChoice.setValue(petChoice.getValue());
+            //petChoice.setValue(petChoice.getValue());
 
-            SortingHat sortingHat = new SortingHat();
-            wizard.assignHouse(sortingHat);
-            resumeLabel.setText("name : " + wizard.getName() + "pet : " + wizard.getPet() + "core : " + wizard.getCore() + "house : " + wizard.getHouse().name);
+            // SortingHat sortingHat = new SortingHat();
+            //wizard.assignHouse(sortingHat);
+
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/recap.fxml")));
             Stage fifthStage = new Stage();
             fifthStage.setTitle("Recap");
 
+            //resumeLabel.setText("name : " + name + "pet : " + pet + "core : " + core + "house : " + wizard.getHouse().name);
+
             fifthStage.setScene(new Scene(root));
             fifthStage.show();
         }
         else {
-            System.out.println("Please choose a pet");
-
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/pet.fxml")));
-            Stage fourthStage = new Stage();
-            fourthStage.setTitle("Choix de l'animal");
-            fourthStage.setScene(new Scene(root));
-            fourthStage.show();
+            petLabel.setText("Please choose a pet");
         }
     }
 }
+

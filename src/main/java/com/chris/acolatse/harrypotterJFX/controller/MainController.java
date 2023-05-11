@@ -72,12 +72,11 @@ public class MainController implements Initializable {
     @FXML
     void launcher(ActionEvent event) throws IOException {
 
-        //Set wizard nickname here  and go to next screen
-      //System.out.println("Thread : " + Thread.currentThread().getName());
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/wizard.fxml")));
 
         Stage secondStage = new Stage();
-        secondStage.setTitle("Créateur de personnage");
+        secondStage.setTitle("Character Creator");
         secondStage.setScene(new Scene(root));
         secondStage.show();
     }
