@@ -1,5 +1,6 @@
 package com.chris.acolatse.harrypotterJFX.controller;
 
+import com.chris.acolatse.harrypotterJFX.entity.GameLogic;
 import com.chris.acolatse.harrypotterJFX.entity.SortingHat;
 import com.chris.acolatse.harrypotterJFX.entity.Wizard;
 import javafx.event.ActionEvent;
@@ -35,7 +36,7 @@ public class ResumeController {
     public void recapWizard() {
         String name = wizardController.pseudoInput.getText();
         String pet = petController.petChoice.getValue();
-        String core = coreController.coreChoice.getValue();
+        //String core = coreController.coreChoice.getValue();
 
         SortingHat sortingHat = new SortingHat();
         wizard.assignHouse(sortingHat);
@@ -48,6 +49,7 @@ public class ResumeController {
     }
 
     public void Play(ActionEvent actionEvent) throws IOException {
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/game.fxml")));
         Stage sixthStage = new Stage();
         sixthStage.setTitle("Game");

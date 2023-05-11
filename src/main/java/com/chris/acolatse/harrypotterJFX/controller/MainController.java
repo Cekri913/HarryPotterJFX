@@ -55,6 +55,7 @@ public class MainController implements Initializable {
         thread.start();
         System.out.println("Thread : " + Thread.currentThread().getName());
 
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/wizard.fxml")));
 
         Stage secondStage = new Stage();

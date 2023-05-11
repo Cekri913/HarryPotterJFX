@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -20,11 +21,12 @@ public class PetController {
     @FXML
     public ChoiceBox<String> petChoice;
 
-    Wizard wizard;
+    Wizard wizard ;
     WizardController wizardController;
     CoreController coreController;
     PetController petController;
     @FXML
+    TextField pseudoInput;
 
     public Label pseudoLabel, resumeLabel;
     @FXML
@@ -33,9 +35,15 @@ public class PetController {
 
     public void showRecap(ActionEvent actionEvent) throws IOException {
         if (petChoice != null) {
+            String name = WizardController.pseudoInput.getText();
+            wizard = new Wizard(name);
 
 
             petChoice.setValue(petChoice.getValue());
+
+            SortingHat sortingHat = new SortingHat();
+            wizard.assignHouse(sortingHat);
+            resumeLabel.setText("name : " + wizard.getName() + "pet : " + wizard.getPet() + "core : " + wizard.getCore() + "house : " + wizard.getHouse().name);
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/recap.fxml")));
             Stage fifthStage = new Stage();

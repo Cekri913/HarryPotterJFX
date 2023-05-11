@@ -1,4 +1,4 @@
 .root{
--fx-background-image:url("@/Users/cekri/Desktop/HPcompléments/HarryPotterJFX/src/main/resources/images/background.png")
--fx-background-size:cover;
+-fx-background-image: url("../images/background.png");
+-fx-background-size: cover;
 }

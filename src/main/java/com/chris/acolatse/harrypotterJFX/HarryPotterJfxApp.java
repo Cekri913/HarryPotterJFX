@@ -1,6 +1,7 @@
 package com.chris.acolatse.harrypotterJFX;
 
 import com.chris.acolatse.harrypotterJFX.entity.Pets;
+import com.chris.acolatse.harrypotterJFX.entity.UserHolder;
 import com.chris.acolatse.harrypotterJFX.entity.Wizard;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -17,7 +18,6 @@ import java.util.Objects;
 
 public class HarryPotterJfxApp extends Application {
 
-    private Wizard wizard;
     @FXML
 
 
@@ -25,8 +25,6 @@ public class HarryPotterJfxApp extends Application {
     public void init() throws Exception {
         System.out.println("Thread : " + Thread.currentThread().getName());
         super.init();
-        wizard = new Wizard("chrisaurel");
-        wizard.setPet(Pets.CAT);
     }
 
     @Override
@@ -37,7 +35,6 @@ public class HarryPotterJfxApp extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/css/main.css").toString());
         primaryStage.setScene(scene);
-        primaryStage.setTitle(wizard.getName());
         primaryStage.show();
 
     }

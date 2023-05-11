@@ -6,28 +6,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="layout" alignment="CENTER" minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chris.acolatse.harrypotterJFX.controller.PetController">
+<?import java.net.URL?>
+<VBox fx:id="layout" alignment="CENTER" spacing="30.0" minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chris.acolatse.harrypotterJFX.controller.PetController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="200.0" />
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <Label fx:id="pseudoLabel" text="Votre pseudo est : " >
-        <VBox.margin>
-            <Insets bottom="100.0" />
-        </VBox.margin></Label>
+    <children>
+        <Label fx:id="pseudoLabel" text="Votre pseudo est : " textFill="WHITE"/>
 
-    <Label text="Choisissez votre animal :" />
-    <ChoiceBox fx:id="petChoice" layoutX="50.0" layoutY="50.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="cat" />
-                <String fx:value="owl" />
-                <String fx:value="toad" />
-                <String fx:value="rat" />
-            </FXCollections>
-        </items>
-    </ChoiceBox>
-    <Button onAction="#showRecap" text="GO ON">
-        <VBox.margin>
-            <Insets top="100.0" />
-        </VBox.margin></Button>
+        <HBox spacing="10.0" alignment="CENTER">
+        <Label text="Choisissez votre animal :" textFill="WHITE"/>
+        <ChoiceBox fx:id="petChoice" layoutX="50.0" layoutY="50.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="cat" />
+                    <String fx:value="owl" />
+                    <String fx:value="toad" />
+                    <String fx:value="rat" />
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="cat"/>
+            </value>
+        </ChoiceBox>
+        </HBox>
+        <Button onAction="#showRecap" text="GO ON" layoutX="300.0" layoutY="463.0"/>
+
+    </children>
+    <stylesheets>
+        <URL value="@../css/Back.css"/>
+        <URL value="@../css/Main.css"/>
+    </stylesheets>
 </VBox>

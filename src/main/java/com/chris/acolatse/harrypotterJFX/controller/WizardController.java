@@ -1,11 +1,14 @@
 package com.chris.acolatse.harrypotterJFX.controller;
 
+import com.chris.acolatse.harrypotterJFX.entity.UserHolder;
+import com.chris.acolatse.harrypotterJFX.entity.Wizard;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.text.Text;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -16,46 +19,37 @@ import java.util.Objects;
 
 public class WizardController {
 
-    public static String pseudo;
     @FXML
-    private VBox layout;
-
-    @FXML
-    TextField pseudoInput;
+    static
+    TextField pseudoInput = new TextField();
 
     @FXML
     private Label pseudoLabel;
 
     @FXML
-    private Button continuer;
-
-    /*
-    public WizardController(TextField pseudoInput){
-        this.pseudoInput = pseudoInput;
-    }
-*/
-    @FXML
     public void continuer() throws IOException {
-        if(pseudoInput !=null) {
-            pseudoInput.setText(pseudoInput.getText());
+        System.out.println(pseudoInput.getText());
 
+        if(!pseudoInput.getText().isEmpty()){
+            Parent coreRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/core.fxml")));
+            pseudoLabel = (Label) coreRoot.lookup("#pseudoLabel");
 
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/core.fxml")));
+            UserHolder holder = UserHolder.getInstance();
+            holder.setWizard( new Wizard(pseudoInput.getText()));
+            pseudoLabel.setText("Votre pseudo est : " + UserHolder.getInstance().getWizard().getName());
+
             Stage thirdStage = new Stage();
             thirdStage.setTitle("Choix du core");
-            thirdStage.setScene(new Scene(root));
+            thirdStage.setScene(new Scene(coreRoot));
             thirdStage.show();
-        }
-        else{
-            System.out.println("Please fill the field.");
+            Stage wizarsStage = (Stage) pseudoInput.getScene().getWindow();
+            wizarsStage.close();
 
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/wizard.fxml")));
-            Stage fourthStage = new Stage();
-            fourthStage.setTitle("Créateur de personnage");
-            fourthStage.setScene(new Scene(root));
-            fourthStage.show();
+        }else{
+           System.out.println("Please fill the field.");
+           pseudoLabel.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+           pseudoLabel.setText("Please fill the field !");
         }
-
 
     }
 
