@@ -37,7 +37,7 @@ public class CoreController {
         holder.setPetRoot(nextRoot);
 
         Label nameLabel = (Label) holder.getPetRoot().lookup("#nameLabel");
-        nameLabel.setText("Name : " + holder.getPetRoot().lookup("#petChoice"));
+        nameLabel.setText("core : " + UserHolder.getInstance().getCore().name());
         choiceBox = (ChoiceBox) holder.getPetRoot().lookup(("#petChoice"));
 
         for (Pets pet : Pets.values()){

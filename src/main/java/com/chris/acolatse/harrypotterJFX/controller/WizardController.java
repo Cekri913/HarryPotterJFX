@@ -45,10 +45,10 @@ public class WizardController {
 
             holder = UserHolder.getInstance();
             holder.setWizard( new Wizard(pseudoInput.getText()));
-            pseudoLabel.setText("Votre pseudo est : " + UserHolder.getInstance().getWizard().getName());
+            pseudoLabel.setText("Your name is : " + UserHolder.getInstance().getWizard().getName());
 
             Stage thirdStage = new Stage();
-            thirdStage.setTitle("Choix du core");
+            thirdStage.setTitle("Core Choice");
             thirdStage.setScene(new Scene(nextRoot));
             thirdStage.show();
             Stage wizardsStage = (Stage) pseudoInput.getScene().getWindow();
