@@ -7,49 +7,51 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.Objects;
 
+
 public class WizardController {
 
     @FXML
-    TextField nameInput = new TextField();
+    TextField pseudoInput = new TextField();
 
-    UserHolder holder = UserHolder.getInstance();
+    UserHolder holder = UserHolder.getInstance();;
+
 
     @FXML
     public void coreChoice() throws IOException {
-        System.out.println(nameInput.getText());
+        System.out.println(pseudoInput.getText());
 
-        if(!nameInput.getText().isEmpty()){
+        if(!pseudoInput.getText().isEmpty()){
+
             Parent currentRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/wizard.fxml")));
             Parent nextRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/core.fxml")));
             holder.setWizardRoot(currentRoot);
             holder.setCoreRoot(nextRoot);
 
-            Label nameLabel = (Label) holder.getCoreRoot().lookup("coreChoice");
+            Label pseudoLabel = (Label) holder.getCoreRoot().lookup("#pseudoLabel");
             ChoiceBox<Object> choiceBox = (ChoiceBox) holder.getCoreRoot().lookup("#coreChoice");
-            for (Core c : Core.values()){
+
+            for (Core c : Core.values()) {
                 choiceBox.getItems().add(c);
             }
 
-            //default choice
+            // Le choix par defaut
             choiceBox.setValue(Core.PHOENIX_FEATHER);
 
             holder = UserHolder.getInstance();
-            holder.setWizard( new Wizard(nameInput.getText()));
-            nameLabel.setText("Your name is : " + UserHolder.getInstance().getWizard().getName());
+            holder.setWizard( new Wizard(pseudoInput.getText()));
+            pseudoLabel.setText("Votre pseudo est : " + UserHolder.getInstance().getWizard().getName());
 
             Stage thirdStage = new Stage();
-            thirdStage.setTitle("Core choice");
+            thirdStage.setTitle("Choix du core");
             thirdStage.setScene(new Scene(nextRoot));
             thirdStage.show();
-            Stage wizardsStage = (Stage) nameInput.getScene().getWindow();
+            Stage wizardsStage = (Stage) pseudoInput.getScene().getWindow();
 
             holder.setWizardStage(wizardsStage);
             holder.setCoreStage(thirdStage);
@@ -57,8 +59,9 @@ public class WizardController {
             wizardsStage.hide();
 
         }else{
-            nameInput.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-            nameInput.setPromptText("Please fill the field");
+            System.out.println("Please fill the field.");
+            pseudoInput.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+            pseudoInput.setPromptText("Please fill the field !");
         }
 
     }

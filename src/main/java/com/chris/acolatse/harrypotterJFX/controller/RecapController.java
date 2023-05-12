@@ -37,7 +37,7 @@ public class RecapController {
     private String maison;
 
     public void recapWizard() {
-        String name = wizardController.nameInput.getText();
+        String name = wizardController.pseudoInput.getText();
         String pet = petController.petChoice.getValue();
 
         SortingHat sortingHat = new SortingHat();
