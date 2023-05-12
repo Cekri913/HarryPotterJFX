@@ -1,6 +1,8 @@
 package com.chris.acolatse.harrypotterJFX.controller;
 
+import com.chris.acolatse.harrypotterJFX.entity.Pets;
 import com.chris.acolatse.harrypotterJFX.entity.SortingHat;
+import com.chris.acolatse.harrypotterJFX.entity.UserHolder;
 import com.chris.acolatse.harrypotterJFX.entity.Wizard;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,54 +19,48 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class PetController {
-    public static String selectedAnimal;
     @FXML
-    public static ChoiceBox<String> petChoice;
-    @FXML
-            private Label petLabel;
-    static String petSelected;
+    public ChoiceBox<String> petChoice;
+    UserHolder holder = UserHolder.getInstance();
 
-    Wizard wizard ;
-    WizardController wizardController;
-    CoreController coreController;
-    PetController petController;
     @FXML
-    TextField pseudoInput;
-
-    public Label pseudoLabel, resumeLabel;
-    @FXML
-    public VBox layout;
+    private Label nameLabel;
 
 
     public void showRecap(ActionEvent actionEvent) throws IOException {
-        if (petChoice.getValue() != null) {
-            petSelected = petChoice.getValue();
-            System.out.println(petSelected);
-            //String name = WizardController.pseudoInput.getText();
-            //String pet = petChoice.getValue();
-            //String core = CoreController.selectedCore;
+        Pets selectedPet = null;
+        ChoiceBox<Object> petChoiceBox = (ChoiceBox) holder.getPetRoot().lookup("#petChoice");
 
-            //wizard = new Wizard(name);
+        System.out.println("   selectedPet: " + petChoiceBox.getValue());
 
-
-            //petChoice.setValue(petChoice.getValue());
-
-            // SortingHat sortingHat = new SortingHat();
-            //wizard.assignHouse(sortingHat);
-
-
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/recap.fxml")));
-            Stage fifthStage = new Stage();
-            fifthStage.setTitle("Recap");
-
-            //resumeLabel.setText("name : " + name + "pet : " + pet + "core : " + core + "house : " + wizard.getHouse().name);
-
-            fifthStage.setScene(new Scene(root));
-            fifthStage.show();
+        for (Pets pet : Pets.values()) {
+            if (Objects.equals(petChoiceBox.getValue().toString(), pet.name())) {
+                selectedPet=pet;
+            };
         }
-        else {
-            petLabel.setText("Please choose a pet");
-        }
+        holder.setPet(selectedPet);
+
+        // Init next screen
+
+        Parent nextRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/recap.fxml")));
+        holder.setRecapRoot(nextRoot);
+
+        Label resumeLabel = (Label) holder.getRecapRoot().lookup("#resumeLabel");
+        resumeLabel.setText("Pseudo : " + UserHolder.getInstance().getWizard().getName()
+                + "\nCore : " + UserHolder.getInstance().getCore().name()
+                + "\nPet : " + UserHolder.getInstance().getPet().name());
+
+        Stage stage5 = new Stage();
+        stage5.setTitle("Recap");
+        stage5.setScene(new Scene(nextRoot));
+        stage5.show();
+
+        holder.setRecapStage(stage5);
+        holder.getPetStage().hide();
+    }
+
+    public void backToCoreStep(ActionEvent event) {
+        UserHolder.getInstance().getCoreStage().show();
+        UserHolder.getInstance().getPetStage().hide();
     }
 }
-

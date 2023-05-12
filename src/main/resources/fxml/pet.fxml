@@ -7,36 +7,37 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
-<VBox fx:id="layout" alignment="CENTER" spacing="30.0" minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chris.acolatse.harrypotterJFX.controller.PetController">
+<VBox fx:id="petlayout" alignment="CENTER" spacing="30.0" minHeight="400.0" minWidth="600.0"
+      xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.chris.acolatse.harrypotterJFX.controller.PetController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <children>
-        <Label fx:id="pseudoLabel" textFill="white"/>
-
-        <HBox spacing="10.0" alignment="CENTER">
-        <Label text="Please choose a pet :" textFill="WHITE"/>
-        <ChoiceBox fx:id="petChoice" layoutX="50.0" layoutY="50.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="cat" />
-                    <String fx:value="owl" />
-                    <String fx:value="toad" />
-                    <String fx:value="rat" />
-                </FXCollections>
-            </items>
-            <value>
-                <String fx:value="cat"/>
-            </value>
-        </ChoiceBox>
-            <Label fx:id="petLabel" textFill="darkred"/>
-        </HBox>
-
-        <Button onAction="#showRecap" text="NEXT" layoutX="300.0" layoutY="463.0"/>
-
-    </children>
     <stylesheets>
         <URL value="@../css/Back.css"/>
         <URL value="@../css/Main.css"/>
     </stylesheets>
+    <Label fx:id="nameLabel" textFill="white"/>
+
+    <HBox spacing="10.0" alignment="CENTER">
+    <Label text="Please choose a pet :" textFill="WHITE"/>
+    <ChoiceBox fx:id="petChoice" layoutX="50.0" layoutY="50.0" xmlns="http://javafx.com/javafx"
+               xmlns:fx="http://javafx.com/fxml">
+    </ChoiceBox>
+    </HBox>
+
+    <Button fx:id="petNextButton" onAction="#showRecap" text="NEXT">
+        <VBox.margin>
+            <Insets top="100.0"/>
+        </VBox.margin>
+    </Button>
+    <Button fx:id="petBackButton" alignment="CENTER" cancelButton="true" onAction="#backToCoreStep" prefHeight="26.0"
+            prefWidth="67.0" text="BACK" textFill="#302c2c">
+        <VBox.margin>
+            <Insets top="100.0"/>
+        </VBox.margin>
+        <HBox.margin>
+            <Insets bottom="10.0" left="50.0" right="10.0" top="10.0"/>
+        </HBox.margin>
+    </Button>
 </VBox>
