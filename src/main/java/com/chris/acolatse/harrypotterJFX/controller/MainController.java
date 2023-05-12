@@ -44,22 +44,19 @@ public class MainController implements Initializable {
 
 
         textAnimator = new TextAnimator(Constant.welcomeText,
-                75, textOutput);
+                25, textOutput);
     }
 
     @FXML
-    void startGame(ActionEvent event) throws IOException {
+    void lunchGame(ActionEvent event) throws IOException {
         System.out.println("Thread : " + Thread.currentThread().getName());
         Thread thread = new Thread(textAnimator);
-
         thread.start();
-        System.out.println("Thread : " + Thread.currentThread().getName());
-
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/wizard.fxml")));
 
         Stage secondStage = new Stage();
-        secondStage.setTitle("Créateur de personnage");
+        secondStage.setTitle("Character Creator");
         secondStage.setScene(new Scene(root));
         secondStage.show();
     }

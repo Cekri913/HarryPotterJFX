@@ -1,11 +1,13 @@
 package com.chris.acolatse.harrypotterJFX;
 
 
+import com.chris.acolatse.harrypotterJFX.utils.TextAnimator;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -17,6 +19,9 @@ import java.util.Objects;
 public class HarryPotterJfxApp extends Application {
 
     @FXML
+    TextAnimator textAnimator;
+    @FXML
+    private Text text;
 
 
     @Override
@@ -44,10 +49,4 @@ public class HarryPotterJfxApp extends Application {
         System.out.println("Thread : " + Thread.currentThread().getName());
     }
 
-    // No needs
-    /*
-    public static void main(String[] args) {
-        launch(args);
-    }
-    */
 }

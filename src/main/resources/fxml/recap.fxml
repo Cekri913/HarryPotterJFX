@@ -8,16 +8,14 @@
 <?import java.net.URL?>
 <?import javafx.scene.layout.HBox?>
 <VBox alignment ="CENTER" spacing="30.0" minHeight="400.0" minWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chris.acolatse.harrypotterJFX.controller.RecapController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="300.0" />
-    </padding>
-    <children>
-        <HBox spacing="10.0" alignment="CENTER">
-        <Label fx:id="resumeLabel" />
-        </HBox>
-
+    <Label fx:id="resumeLabel" />
+    <HBox alignment="BOTTOM_CENTER" spacing="30.0">
         <Button text="RECAP !" onAction="#recapWizard"/>
-    </children>
+        <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="250.0"/>
+        </VBox.margin>
+    </HBox>
+
     <stylesheets>
         <URL value="@../css/Main.css"/>
         <URL value="@../css/Back.css"/>
