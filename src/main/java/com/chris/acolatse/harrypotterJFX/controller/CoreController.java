@@ -21,15 +21,16 @@ public class CoreController {
     public void showPet(ActionEvent actionEvent) throws IOException {
 
         Core selectedCore = null;
-        ChoiceBox<Object> choiceBox = (ChoiceBox) holder.getCoreRoot().lookup("#coreChoice");
+        ToggleGroup toggleGroup = (ToggleGroup) holder.getCoreRoot().lookup("#coreGroup");
 
-        System.out.println("    choiceBox.getValue() : " + choiceBox.getValue());
+        System.out.println("    togglegroup.getSelectedToggle() : " + toggleGroup.getSelectedToggle());
 
-        for(Core c : Core.values()){
-            if(Objects.equals(choiceBox.getValue().toString(), c.name())){
-                selectedCore = c;
-            };
+        for (Core c : Core.values()) {
+            if(Objects.equals(toggleGroup.getSelectedToggle().toString(), c.name())){
+                selectedCore=c;
+            }
         }
+
         holder.setCore(selectedCore);
 
         //Init next screen
@@ -39,7 +40,7 @@ public class CoreController {
 
         Label nameLabel = (Label) holder.getPetRoot().lookup("#nameLabel");
         nameLabel.setText("core : " + EntityHolder.getInstance().getCore().name());
-        choiceBox = (ChoiceBox) holder.getPetRoot().lookup(("#petChoice"));
+        ChoiceBox<Object> choiceBox = (ChoiceBox) holder.getPetRoot().lookup(("#petChoice"));
 
         for (Pets pet : Pets.values()){
             choiceBox.getItems().add(pet);

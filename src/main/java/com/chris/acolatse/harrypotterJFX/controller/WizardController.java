@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,6 +21,9 @@ public class WizardController {
 
     @FXML
     TextField pseudoInput = new TextField();
+    ToggleGroup coreGroup;
+    @FXML
+            private VBox container;
 
     EntityHolder holder = EntityHolder.getInstance();
 
@@ -34,14 +38,17 @@ public class WizardController {
             holder.setCoreRoot(nextRoot);
 
             Label pseudoLabel = (Label) holder.getCoreRoot().lookup("#pseudoLabel");
-            ChoiceBox<Object> choiceBox = (ChoiceBox) holder.getCoreRoot().lookup("#coreChoice");
+            //RadioButton radioButton = (RadioButton) coreGroup.getSelectedToggle();
+            ToggleGroup toggleGroup = (ToggleGroup) holder.getCoreRoot().lookup("#coreGroup");
 
-            for (Core c : Core.values()) {
-                choiceBox.getItems().add(c);
+            for (Core c : Core.values() ) {
+                RadioButton button = new RadioButton(c.name());
+                button.setToggleGroup(coreGroup);
+                container.getChildren().add(button);
             }
 
-            // Le choix par defaut
-            choiceBox.setValue(Core.PHOENIX_FEATHER);
+            // Le choix par defaut -> pas possible pour un toggle
+            //toggleGroup.equals(Core.PHOENIX_FEATHER);
 
             holder = EntityHolder.getInstance();
             holder.setWizard( new Wizard(pseudoInput.getText()));
@@ -49,7 +56,7 @@ public class WizardController {
 
             Stage thirdStage = new Stage();
             thirdStage.setTitle("Core Choice");
-            thirdStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/app_icon.png")));
+            thirdStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/app_icon.png"))));
             thirdStage.setScene(new Scene(nextRoot));
             thirdStage.show();
             holder.setCoreStage(thirdStage);
