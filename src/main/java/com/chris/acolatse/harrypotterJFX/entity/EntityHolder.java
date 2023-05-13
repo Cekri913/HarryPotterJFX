@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 
-public final class UserHolder {
+public final class EntityHolder {
     @Getter @Setter
     private Wizard wizard;
 
@@ -15,11 +15,12 @@ public final class UserHolder {
     @Getter @Setter
     private Pets pet;
 
-    private final static UserHolder INSTANCE = new UserHolder();
-
+    @Getter @Setter
+    private Parent startRoot;
 
     @Getter @Setter
     private Parent wizardRoot;
+
     @Setter @Getter
     private Parent petRoot;
 
@@ -31,6 +32,9 @@ public final class UserHolder {
 
     @Getter @Setter
     private Parent gameRoot;
+
+    @Getter @Setter
+    private Stage startStage;
 
     @Getter @Setter
     private Stage wizardStage;
@@ -47,11 +51,11 @@ public final class UserHolder {
     @Getter @Setter
     private Stage gameStage;
 
+    private final static EntityHolder INSTANCE = new EntityHolder();
 
+    private EntityHolder() {}
 
-    private UserHolder() {}
-
-    public static UserHolder getInstance() {
+    public static EntityHolder getInstance() {
         return INSTANCE;
     }
 

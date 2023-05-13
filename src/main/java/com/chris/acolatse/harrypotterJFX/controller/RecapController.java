@@ -1,8 +1,7 @@
 package com.chris.acolatse.harrypotterJFX.controller;
 
-import com.chris.acolatse.harrypotterJFX.entity.GameLogic;
 import com.chris.acolatse.harrypotterJFX.entity.SortingHat;
-import com.chris.acolatse.harrypotterJFX.entity.UserHolder;
+import com.chris.acolatse.harrypotterJFX.entity.EntityHolder;
 import com.chris.acolatse.harrypotterJFX.entity.Wizard;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -30,7 +30,7 @@ public class RecapController {
     WizardController wizardController;
     PetController petController;
 
-    UserHolder holder = UserHolder.getInstance();
+    EntityHolder holder = EntityHolder.getInstance();
     CoreController coreController;
     private String animal;
     private String core;
@@ -54,6 +54,7 @@ public class RecapController {
         holder.setGameRoot(nextRoot);
         Stage stage6 = new Stage();
         stage6.setTitle("Game");
+        stage6.getIcons().add(new Image(getClass().getResourceAsStream("/images/app_icon.png")));
         stage6.setScene(new Scene(nextRoot));
         stage6.show();
         holder.setGameStage(stage6);
@@ -61,7 +62,7 @@ public class RecapController {
     }
 
     public void backToPetStep(ActionEvent event) {
-        UserHolder.getInstance().getRecapStage().hide();
-        UserHolder.getInstance().getPetStage().show();
+        EntityHolder.getInstance().getRecapStage().hide();
+        EntityHolder.getInstance().getPetStage().show();
     }
 }

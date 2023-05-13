@@ -19,7 +19,14 @@ public class GameController {
         GameLogic.fight(wizard, troll, level1);
         level1.end(wizard, troll);
     }
-    public void quit(ActionEvent actionEvent){
+
+    public void Quit(ActionEvent event){
         Platform.exit();
+    }
+
+    public void Attack(ActionEvent event) {
+    }
+
+    public void Defend(ActionEvent event) {
     }
 }

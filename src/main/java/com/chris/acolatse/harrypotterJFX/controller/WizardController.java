@@ -1,13 +1,15 @@
 package com.chris.acolatse.harrypotterJFX.controller;
 
 import com.chris.acolatse.harrypotterJFX.entity.Core;
-import com.chris.acolatse.harrypotterJFX.entity.UserHolder;
+import com.chris.acolatse.harrypotterJFX.entity.EntityHolder;
 import com.chris.acolatse.harrypotterJFX.entity.Wizard;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,7 +21,7 @@ public class WizardController {
     @FXML
     TextField pseudoInput = new TextField();
 
-    UserHolder holder = UserHolder.getInstance();;
+    EntityHolder holder = EntityHolder.getInstance();
 
 
     @FXML
@@ -28,9 +30,7 @@ public class WizardController {
 
         if(!pseudoInput.getText().isEmpty()){
 
-            Parent currentRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/wizard.fxml")));
             Parent nextRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/core.fxml")));
-            holder.setWizardRoot(currentRoot);
             holder.setCoreRoot(nextRoot);
 
             Label pseudoLabel = (Label) holder.getCoreRoot().lookup("#pseudoLabel");
@@ -43,20 +43,17 @@ public class WizardController {
             // Le choix par defaut
             choiceBox.setValue(Core.PHOENIX_FEATHER);
 
-            holder = UserHolder.getInstance();
+            holder = EntityHolder.getInstance();
             holder.setWizard( new Wizard(pseudoInput.getText()));
-            pseudoLabel.setText("Your name is : " + UserHolder.getInstance().getWizard().getName());
+            pseudoLabel.setText("Your name is : " + EntityHolder.getInstance().getWizard().getName());
 
             Stage thirdStage = new Stage();
             thirdStage.setTitle("Core Choice");
+            thirdStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/app_icon.png")));
             thirdStage.setScene(new Scene(nextRoot));
             thirdStage.show();
-            Stage wizardsStage = (Stage) pseudoInput.getScene().getWindow();
-
-            holder.setWizardStage(wizardsStage);
             holder.setCoreStage(thirdStage);
-
-            wizardsStage.hide();
+            holder.getWizardStage().hide();
 
         }else{
             System.out.println("Please fill the field.");
@@ -66,4 +63,8 @@ public class WizardController {
 
     }
 
+    public void backToStart(ActionEvent event) {
+        EntityHolder.getInstance().getWizardStage().hide();
+        EntityHolder.getInstance().getStartStage().show();
+    }
 }

@@ -1,7 +1,7 @@
 package com.chris.acolatse.harrypotterJFX.controller;
 
 
-import com.chris.acolatse.harrypotterJFX.entity.TextOutput;
+import com.chris.acolatse.harrypotterJFX.entity.EntityHolder;
 import com.chris.acolatse.harrypotterJFX.utils.Constant;
 import com.chris.acolatse.harrypotterJFX.utils.TextAnimator;
 import javafx.application.Platform;
@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -23,14 +24,14 @@ public class MainController implements Initializable {
 
 
     TextAnimator textAnimator;
+    EntityHolder holder = EntityHolder.getInstance();;
 
     @FXML
     private Text text;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        TextOutput textOutput = new TextOutput() {
+       /* TextOutput textOutput = new TextOutput() {
             @Override
             public void writeText(String textOut) {
                 Platform.runLater(new Runnable() {
@@ -42,23 +43,25 @@ public class MainController implements Initializable {
             }
         };
 
-
         textAnimator = new TextAnimator(Constant.welcomeText,
-                25, textOutput);
+                25, textOutput);*/
+
+        text.setText(Constant.welcomeText);
     }
 
     @FXML
     void lunchGame(ActionEvent event) throws IOException {
-        System.out.println("Thread : " + Thread.currentThread().getName());
-        Thread thread = new Thread(textAnimator);
-        thread.start();
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/wizard.fxml")));
+        Parent nextRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/wizard.fxml")));
+        holder.setWizardRoot(nextRoot);
 
         Stage secondStage = new Stage();
         secondStage.setTitle("Character Creator");
-        secondStage.setScene(new Scene(root));
+        secondStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/app_icon.png")));
+        secondStage.setScene(new Scene(nextRoot));
         secondStage.show();
+        holder.setWizardStage(secondStage);
+        holder.getStartStage().hide();
     }
 
     @FXML
@@ -66,15 +69,4 @@ public class MainController implements Initializable {
         Platform.exit();
     }
 
-    @FXML
-    void launcher(ActionEvent event) throws IOException {
-
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/wizard.fxml")));
-
-        Stage secondStage = new Stage();
-        secondStage.setTitle("Character Creator");
-        secondStage.setScene(new Scene(root));
-        secondStage.show();
-    }
 }

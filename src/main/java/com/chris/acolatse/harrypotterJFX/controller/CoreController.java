@@ -2,19 +2,20 @@ package com.chris.acolatse.harrypotterJFX.controller;
 
 import com.chris.acolatse.harrypotterJFX.entity.Core;
 import com.chris.acolatse.harrypotterJFX.entity.Pets;
-import com.chris.acolatse.harrypotterJFX.entity.UserHolder;
+import com.chris.acolatse.harrypotterJFX.entity.EntityHolder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
 public class CoreController {
-    UserHolder holder = UserHolder.getInstance();
+    EntityHolder holder = EntityHolder.getInstance();
 
     @FXML
     public void showPet(ActionEvent actionEvent) throws IOException {
@@ -37,7 +38,7 @@ public class CoreController {
         holder.setPetRoot(nextRoot);
 
         Label nameLabel = (Label) holder.getPetRoot().lookup("#nameLabel");
-        nameLabel.setText("core : " + UserHolder.getInstance().getCore().name());
+        nameLabel.setText("core : " + EntityHolder.getInstance().getCore().name());
         choiceBox = (ChoiceBox) holder.getPetRoot().lookup(("#petChoice"));
 
         for (Pets pet : Pets.values()){
@@ -51,6 +52,7 @@ public class CoreController {
 
         Stage stage4 = new Stage();
         stage4.setTitle("Pet Choice");
+        stage4.getIcons().add(new Image(getClass().getResourceAsStream("/images/app_icon.png")));
         stage4.setScene(new Scene(nextRoot));
         stage4.show();
         holder.setPetStage(stage4);
@@ -61,8 +63,8 @@ public class CoreController {
     }
 
     public void backToWizardStep(ActionEvent actionEvent) throws IOException {
-        UserHolder.getInstance().getWizardStage().show();
-        UserHolder.getInstance().getCoreStage().hide();
+        EntityHolder.getInstance().getWizardStage().show();
+        EntityHolder.getInstance().getCoreStage().hide();
 
     }
 
