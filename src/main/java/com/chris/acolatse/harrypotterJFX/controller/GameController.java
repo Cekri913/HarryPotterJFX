@@ -109,34 +109,7 @@ public class GameController implements Initializable {
 
     }
 
-    public void defend2() {
-       /* holder = EntityHolder.getInstance();
-        Enemy enemy = holder.getCurrentLevel().getEnemy();
-        Wizard wizard = holder.getWizard();
-        Level level = holder.getCurrentLevel();
-        //level.start();
-        figthInfo.setText(holder.getCurrentLevel().start());
 
-        if (wizard.IsAlive() && enemy.IsAlive()) {
-
-            System.out.println();
-            System.out.println("You choose to defend");
-            wizard.defend(enemy, level);
-            // force qui atténue la puissance de frappe de l'ennemy
-
-            System.out.println("santé " + enemy.getName() + " : " + enemy.health);
-            System.out.println("santé wizard : " + wizard.health);
-
-        }
-        if (!wizard.IsAlive()) {
-            System.out.println(Constant.customDisplayText(Constant.BLACK, wizard.getName() + ", " + enemy.getName() + " just killed you..."));
-        } else if (!enemy.IsAlive()) {
-            System.out.println(Constant.customDisplayText(Constant.GREEN, "Congratulation " + wizard.getName() + ", " + "you just killed " + enemy.getName()));
-
-        }
-
-        end();*/
-    }
 
 
 
@@ -146,53 +119,6 @@ public class GameController implements Initializable {
         Wizard wizard = holder.getWizard();
         Level level = holder.getCurrentLevel();
 
-       /* if (!enemy.IsAlive()) {
-            System.out.println("You just finished the level " + level.getName());
-            if(level.getNumber() == 7){
-                System.out.println("Congratulations " + wizard.getName() + ", you passed all the 7 levels. \n You are now graduated of the most prestigious witchcraft school on the planet ");
-                System.out.println("Do you want to start again ? \n 1- Yes \n 2- No");
-               // String start = sc.nextLine().toUpperCase();
-                while(!start.equals("Yes".toUpperCase()) && !start.equals("No".toUpperCase())){
-                    System.out.println("Please choose yes or no");
-                    sc.nextLine();
-                }
-                if(start.equals("Yes".toUpperCase())){
-                    System.out.println("Let's restart !");
-                    GameLogic gamelogic = new GameLogic();
-                }else{
-                    System.out.println("See you soon !");
-                }
-
-            }else {
-                System.out.println("Do you want increase your health (1) or increase your spellDamage (2) for the next of your journey ? ");
-                while (!sc.hasNextInt()) {
-                    System.out.println("Please choose 1 or 2");
-                    sc.nextLine();
-                }
-                int choice = sc.nextInt();
-                while (choice != 1 && choice != 2) {
-                    System.out.println("Please choose 1 or 2");
-                    sc.nextLine();
-                    choice = sc.nextInt();
-                }
-
-                if (choice == 1) {
-                    System.out.println("health increasing...");
-                    double amount = (Math.random()) * 2 + 1;
-                    wizard.increaseHealth(amount);
-                    System.out.println("Increasing success !\n Your health has been increased, your health now is " + wizard.getHealth());
-                }
-                if (choice == 2) {
-                    System.out.println("damage increasing...");
-                    double amount = (Math.random() * 2 + 1);
-                    wizard.increaseDamage(amount);
-                    System.out.println("Increasing success !\n Your spellDamage has been multiplied by " + amount);
-                    System.out.println(Wizard.getSpellAmplitude());
-                }
-            }
-        } else if (!wizard.IsAlive()) {
-            System.out.println(Constant.customDisplayText(Constant.FIVE_TAB, "GAME OVER", Constant.RED));
-        }*/
     }
 
     @Override

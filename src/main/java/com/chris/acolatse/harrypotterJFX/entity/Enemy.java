@@ -90,12 +90,12 @@ public class Enemy {
             damage = r.nextInt(10, 16);
             wizard.calculateDamage(damage);
             if(level.getNumber() == 4 ){
-                damage *= 2;
+                damage *= 1.5;
                 System.out.println("Petter Pettigrew and Voldemort has inflicted you "  + damage + " of damage.");
                 message="Petter Pettigrew and Voldemort has inflicted you "  + damage + " of damage.";
             }
             if(level.getNumber() ==  7){
-                damage *= 2.5;
+                damage *= 2;
                 System.out.println("Bellatrix Lesange and Voldemort has inflicted you " + damage + " of damage.");
                 message = "Bellatrix Lesange and Voldemort has inflicted you " + damage + " of damage.";
             }else {
