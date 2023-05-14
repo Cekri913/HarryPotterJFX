@@ -47,7 +47,7 @@ public class Wizard {
     // Constructor
     public Wizard(String name) { //, int health, Pets pet, Wand wand, House house) {
         this.name = name;
-        this.health = 900;
+        this.health = 1200;
         this.house  = new House(SortingHat.assignHouse());
         this.inDefense = false;
         spells = new ArrayList<>();
