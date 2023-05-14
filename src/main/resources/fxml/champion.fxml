@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" prefHeight="410.0" prefWidth="547.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chris.acolatse.harrypotterJFX.controller.GameController">
+   <ImageView fitHeight="150.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../images/champion.png" />
+      </image>
+      <VBox.margin>
+         <Insets top="100.0" />
+      </VBox.margin>
+   </ImageView>
+    <Label prefHeight="35.0" prefWidth="317.0" text="YOU ARE THE CHAMPION !" textAlignment="CENTER">
+      <font>
+         <Font size="24.0" />
+      </font></Label>
+</VBox>

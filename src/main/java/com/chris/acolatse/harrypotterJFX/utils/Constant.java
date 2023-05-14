@@ -26,10 +26,11 @@ public class Constant {
     }
 
     public static String welcomeText = """                   
-                                        \t\tWelcome to Harry Potter at Home, the wizarding role-playing game.\s
-                                        \t\tDo you have what it takes to become the greatest wizards ? \s
-                                        \t\tYour goal is to complete your studies at Hogwarts.\s
-                                        \t\tEach year will be filled with challenges.
-                                        \t\tCan you meet all the challenges ?\s """;
+                                        Welcome to << Harry Potter at Home >>,\s
+                                        the wizarding role-playing game.\s
+                                        Do you have what it takes to become the greatest wizards ?\s\s
+                                        Your goal is to complete your studies at Hogwarts.\s
+                                        Each year will be filled with challenges.
+                                        Can you meet all the challenges ?\s """;
 
 }

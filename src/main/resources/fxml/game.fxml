@@ -4,55 +4,121 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.image.Image?>
 <VBox alignment="CENTER" minHeight="400.0" minWidth="600.0" spacing="30.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chris.acolatse.harrypotterJFX.controller.GameController">
 
-    <Label fx:id="text" text="Here is your pet for the journey :" textFill="white">
+    <Label id="levelLabel" fx:id="text" text="Level 1 : The Philosopher's stone" textFill="#01bbf4">
       <font>
          <Font size="24.0" />
-      </font></Label>
+      </font>
+      <VBox.margin>
+         <Insets bottom="20.0" />
+      </VBox.margin></Label>
     <HBox alignment="CENTER">
-        <ImageView id="mainImageview" fitHeight="150.0" fitWidth="357.0" pickOnBounds="true" preserveRatio="true">
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+             <HBox>
+                 <ImageView id="wizardAvatar" HBox.hgrow="NEVER"  fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                         <Insets right="500.0" />
+                     </VBox.margin>
+                 </ImageView>
+                 <ImageView fitWidth="200.0" fitHeight="200.0">
+                     <VBox.margin>
+                         <Insets right="400.0"/>
+                     </VBox.margin>
+                     <image>
+                         <Image url="@../images/harryP.png"/>
+                     </image>
+                 </ImageView>
 
-            <VBox.margin>
-                <Insets bottom="10.0" left="10.0" right="300.0" top="10.0" />
-            </VBox.margin>
-            <image>
-                <Image url="@../images/hp_invisibility_magic_icon.png" />
-            </image>
-         <HBox.margin>
-            <Insets right="150.0" />
-         </HBox.margin>
-        </ImageView>
-        <ImageView id="mainImageview" fitHeight="150.0" fitWidth="357.0" pickOnBounds="true" preserveRatio="true">
-            <VBox.margin>
-                <Insets bottom="10.0" left="300.0" right="10.0" top="10.0" />
-            </VBox.margin>
-            <image>
-                <Image url="@../images/enemy2_icon.png" />
-            </image>
-        </ImageView>
+             </HBox>
+            <Label id="wizardName" alignment="CENTER" prefHeight="27.0" prefWidth="628.0" text="wizard" textAlignment="CENTER" textFill="#1b09dc">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <Label id="wHealth" alignment="CENTER" prefHeight="27.0" prefWidth="616.0" text="wHealth" textFill="#0aea42">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox prefHeight="202.0" prefWidth="394.0">
+         <children>
+              <ImageView id="enemyAvatar" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <VBox.margin>
+                      <Insets left="500.0" />
+                  </VBox.margin>
+              </ImageView>
+            <Label id="enemyName" alignment="CENTER" prefHeight="27.0" prefWidth="616.0" text="enemy" textFill="#1b09dc">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <Label id="eHealth" alignment="CENTER" prefHeight="27.0" prefWidth="616.0" text="eHealth" textFill="#0aea42">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
     </HBox>
-   <BorderPane opacity="0.0" prefHeight="85.0" prefWidth="600.0" style="-fx-control-inner-background : #FFFFFF;">
-      <center>
-          <Label fx:id="fightLabel" style="-fx-control-inner-background : #FFFFFF;" text="nrnrnjrtjnrtjntjtjtjt" textFill="WHITE" BorderPane.alignment="CENTER" />
-      </center></BorderPane>
-    <HBox alignment="BOTTOM_CENTER" spacing="30.0">
-        <Button onAction="#startGame" text="PLAY GAME" />
-        <Button text="Attack" />
-        <Button text="Defend" />
-        <Button onAction="#quit" text="Quit" />
+   <BorderPane prefHeight="127.0" prefWidth="1400.0" style="-fx-control-inner-background : #FFFFFF;">
+      <left>
+          <Label fx:id="fightLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="946.0" style="-fx-control-inner-background : #FFFFFF;" text="" textFill="#95ac26" BorderPane.alignment="CENTER">
+            <font>
+               <Font size="24.0" />
+            </font>
+            <BorderPane.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </BorderPane.margin>
+            <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding></Label>
+      </left>
+      <top>
+         <HBox alignment="CENTER" prefHeight="78.0" prefWidth="1400.0" spacing="30.0" BorderPane.alignment="CENTER" />
+      </top></BorderPane>
+   <Button id="continueGame" fx:id="continueGame1" onAction="#continueGame" prefHeight="40.0" prefWidth="82.0" text="Continue" />
+   <HBox alignment="BOTTOM_CENTER" prefHeight="40.0" prefWidth="771.0" spacing="30.0">
+      <children>
+         <Button id="restartGame" fx:id="restartGame" onAction="#restartGame" prefHeight="40.0" prefWidth="82.0" text="Restart" />
+      </children>
+   </HBox>
+    <HBox id="playButtons" alignment="BOTTOM_CENTER" prefHeight="38.0" prefWidth="1315.0" spacing="30.0">
+        <Button fx:id="attack" onAction="#attack" prefHeight="40.0" prefWidth="67.0" text="Attack" />
+        <Button fx:id="defend" onAction="#defend" text="Defend" />
         <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="50.0" />
+            <Insets />
         </VBox.margin>
 
     </HBox>
+   <HBox alignment="BOTTOM_CENTER" spacing="30.0">
+      <children>
+         <Button fx:id="quitGame" onAction="#quit" prefHeight="40.0" prefWidth="70.0" text="Quit">
+            <HBox.margin>
+               <Insets bottom="50.0" />
+            </HBox.margin>
+         </Button>
+      </children>
+   </HBox>
 
     <stylesheets>
         <URL value="@../css/Back.css" />
