@@ -119,7 +119,7 @@ public class Wizard {
        String message =null;
         this.inDefense = false;
        Random r = new Random();
-       int damage = r.nextInt(16);
+       int damage = r.nextInt(20);
        if (damage == 0) {
            System.out.println("You missed your spell...");
            message="You missed your spell...";
