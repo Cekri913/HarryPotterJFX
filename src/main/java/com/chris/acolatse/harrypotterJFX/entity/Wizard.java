@@ -1,9 +1,11 @@
 package com.chris.acolatse.harrypotterJFX.entity;
 import com.chris.acolatse.harrypotterJFX.utils.Constant;
+import javafx.scene.image.Image;
 import lombok.Data;
 import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -11,6 +13,8 @@ import java.util.Random;
 @Data @Getter
 public class Wizard {
     private String name;
+
+    private Image avatar;
     public int health;
     private boolean inDefense;
     private Pets pet;
@@ -18,6 +22,27 @@ public class Wizard {
     public House house;
     public static int spellAmplitude = 15;
     private List<Spell> spells;
+
+    public void updateAvatar() {
+        switch (pet){
+            case CAT:
+                this.avatar= new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/cat.png")));
+                break;
+            case TOAD:
+                this.avatar= new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/cat.png")));
+                break;
+            case RAT:
+                this.avatar= new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/cat.png")));
+                break;
+            case OWL:
+                this.avatar= new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/cat.png")));
+                break;
+            default:
+                this.avatar= new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/versus_icon.png")));
+                break;
+        }
+
+    }
 
     // Constructor
     public Wizard(String name) { //, int health, Pets pet, Wand wand, House house) {
@@ -40,6 +65,7 @@ public class Wizard {
 
     public void setPet(Pets pet) {
         this.pet = pet;
+        updateAvatar();
     }
     public boolean IsAlive(){
         return this.health > 0;
@@ -89,21 +115,27 @@ public class Wizard {
         }
         this.setHealth(this.getHealth() - damage);
     }
-   public void attack(Enemy enemy) {
+   public String attack(Enemy enemy) {
+       String message =null;
         this.inDefense = false;
        Random r = new Random();
        int damage = r.nextInt(16);
        if (damage == 0) {
            System.out.println("You missed your spell...");
+           message="You missed your spell...";
        } else {
            enemy.calculateDamage(damage);
            System.out.println(Constant.customDisplayText(Constant.BOLD_TEXT,"You have inflicted " + damage + " of damages to " + enemy.getName(), Constant.GREEN));
+           message="You have inflicted " + damage + " of damages to " + enemy.getName();
        }
+       return message;
    }
 
-    public void defend(Enemy enemy, Level level) {
+    public String defend(Enemy enemy, Level level) {
         this.inDefense = true;
         enemy.attack(this, level);
+        String message = "Your are in mode DEFENSE";
+        return message;
     }
 
 }
